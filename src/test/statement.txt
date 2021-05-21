@@ -1,0 +1,7 @@
+proc int main(){
+record c{
+    int a
+    int a;
+}
+int[3] b;
+}

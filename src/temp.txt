@@ -1,0 +1,64 @@
+Start -> P
+P -> D P
+P -> S P
+P -> ε
+
+/*声明*/
+D -> proc X id ( M ) { P }
+D -> record id { P }
+D -> T id A ;
+A -> = F A
+A -> , id A
+A -> ε
+M -> M , X id
+M -> X id
+M -> ε
+T -> X C
+X -> int
+X -> float
+X -> bool
+X -> char
+C -> [ digit ] C
+C -> ε
+
+S -> Y
+S -> Z
+/*赋值语句*/
+Y -> L = E ;
+L -> L [ digit ]
+L -> id
+E -> E + G
+E -> G
+G -> G * F
+G -> F
+F -> ( E )
+F -> digit
+F -> id
+F -> L
+
+/*控制流语句*/
+Y -> if ( B ) Y else Y
+Y -> do S while ( B ) ;
+Y -> return E ;
+Z -> if ( B ) S
+Z -> if ( B ) Y else Z
+B -> B || H
+B -> H
+H -> H && I
+H -> I
+I -> ! I
+I -> ( B )
+I -> E OP E
+I -> true
+I -> false
+OP -> <
+OP -> <=
+OP -> >
+OP -> >=
+OP -> ==
+OP -> !=
+
+/*过程调用*/
+Y -> call id ( E_list ) ;
+E_list -> E_list , E
+E_list -> E
